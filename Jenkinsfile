@@ -41,6 +41,12 @@ pipeline {
             }
         }
 
+        stage('Secret Scan') {
+    steps {
+        bat 'gitleaks detect --source . --redact --exit-code 1'
+    }
+}
+
     }
 
     post {
