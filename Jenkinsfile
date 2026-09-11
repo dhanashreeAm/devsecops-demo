@@ -43,7 +43,19 @@ pipeline {
 
         stage('Secret Scan') {
     steps {
-        bat 'gitleaks detect --source . --redact --exit-code 1'
+        bat '''
+            echo ===== GITLEAKS VERSION =====
+            gitleaks version
+
+            echo ===== CURRENT DIRECTORY =====
+            cd
+
+            echo ===== FILES =====
+            dir
+
+            echo ===== GITLEAKS SCAN =====
+            gitleaks detect --source=. --redact --verbose --exit-code=1
+        '''
     }
 }
 
