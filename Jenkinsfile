@@ -6,37 +6,39 @@ pipeline {
 
         stage('Checkout') {
             steps {
-                echo 'Code has been checked out from GitHub'
+                echo 'Source code checked out'
+            }
+        }
+
+        stage('Install Dependencies') {
+            steps {
+                bat 'python -m pip install -r requirements.txt'
             }
         }
 
         stage('Build') {
             steps {
-                echo 'Building application...'
+                bat 'python app.py'
             }
         }
 
         stage('Test') {
             steps {
-                echo 'Running tests...'
-            }
-        }
-
-        stage('Security Scan') {
-            steps {
-                echo 'Running security scan...'
+                bat 'pytest'
             }
         }
 
     }
 
     post {
+
         success {
-            echo 'Pipeline completed successfully!'
+            echo 'CI Pipeline completed successfully!'
         }
 
         failure {
-            echo 'Pipeline failed!'
+            echo 'CI Pipeline failed!'
         }
+
     }
 }
