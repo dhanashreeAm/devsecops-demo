@@ -17,6 +17,12 @@ pipeline {
             }
         }
 
+        stage('Gitleaks Version') {
+    steps {
+        bat 'gitleaks version'
+    }
+}
+
         stage('Install Dependencies') {
             steps {
                 bat 'python -m pip install -r requirements.txt'
