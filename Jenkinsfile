@@ -54,7 +54,7 @@ pipeline {
             dir
 
             echo ===== GITLEAKS SCAN =====
-            bat 'gitleaks dir . --config .gitleaks.toml --redact --exit-code 1'
+            gitleaks dir . --config .gitleaks.toml --redact --exit-code 1
         '''
     }
 }
