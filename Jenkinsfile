@@ -52,7 +52,7 @@ pipeline {
         bat 'echo PATH=%PATH%'
         bat 'where docker'
         bat 'docker version'
-    }
+    
 }
 }
     }
