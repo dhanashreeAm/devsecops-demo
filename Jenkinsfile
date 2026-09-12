@@ -46,6 +46,12 @@ pipeline {
                 bat 'pip-audit -r requirements.txt'
             }
         }
+
+        stage('Docker Check') {
+    steps {
+        bat 'docker version'
+    }
+}
     }
 
     post {
