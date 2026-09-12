@@ -1,0 +1,22 @@
+[
+ {
+  "RuleID": "training-secret",
+  "Description": "Detect training secret",
+  "StartLine": 1,
+  "EndLine": 1,
+  "StartColumn": 1,
+  "EndColumn": 15,
+  "Match": "TRAINING_SECRET",
+  "Secret": "TRAINING_SECRET",
+  "File": "secret-test.txt",
+  "SymlinkFile": "",
+  "Commit": "",
+  "Entropy": 3.240224,
+  "Author": "",
+  "Email": "",
+  "Date": "",
+  "Message": "",
+  "Tags": [],
+  "Fingerprint": "secret-test.txt:training-secret:1"
+ }
+]

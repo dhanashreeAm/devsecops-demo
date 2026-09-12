@@ -33,6 +33,12 @@ pipeline {
                 bat 'gitleaks dir . --config .gitleaks.toml --redact --exit-code 1'
             }
         }
+
+stage('SAST - Bandit') {
+            steps {
+                bat 'python -m bandit -r . -ll'
+            }
+        }
     }
 
     post {
