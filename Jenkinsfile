@@ -47,13 +47,10 @@ pipeline {
             }
         }
 
-        stage('Docker Check') {
+        stage('Docker Build') {
     steps {
-        bat 'echo PATH=%PATH%'
-        bat 'where docker'
-        bat 'docker version'
-    
-}
+        bat 'docker build -t devsecops-demo:%BUILD_NUMBER% .'
+    }
 }
     }
 
