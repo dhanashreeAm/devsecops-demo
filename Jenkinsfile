@@ -49,8 +49,11 @@ pipeline {
 
         stage('Docker Check') {
     steps {
+        bat 'echo PATH=%PATH%'
+        bat 'where docker'
         bat 'docker version'
     }
+}
 }
     }
 
