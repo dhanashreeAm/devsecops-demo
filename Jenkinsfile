@@ -52,6 +52,11 @@ pipeline {
         bat 'docker build -t devsecops-demo:%BUILD_NUMBER% .'
     }
 }
+        stage('Container Scan - Trivy') {
+    steps {
+        bat 'trivy image --severity HIGH,CRITICAL --exit-code 1 devsecops-demo:%BUILD_NUMBER%'
+    }
+}
     }
 
     post {
