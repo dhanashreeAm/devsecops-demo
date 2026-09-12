@@ -13,6 +13,7 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 bat 'python -m pip install -r requirements.txt'
+                bat 'python -m pip install pip-audit'
             }
         }
 
@@ -34,20 +35,27 @@ pipeline {
             }
         }
 
-stage('SAST - Bandit') {
+        stage('SAST - Bandit') {
             steps {
                 bat 'python -m bandit -r . -ll'
+            }
+        }
+
+        stage('SCA - Dependency Scan') {
+            steps {
+                bat 'pip-audit -r requirements.txt'
             }
         }
     }
 
     post {
+
         success {
-            echo 'CI + Security Pipeline completed successfully!'
+            echo 'CI + DevSecOps security pipeline completed successfully!'
         }
 
         failure {
-            echo 'Security/CI gate failed!'
+            echo 'CI/Security gate failed!'
         }
     }
 }
